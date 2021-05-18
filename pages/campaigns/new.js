@@ -32,7 +32,7 @@ class CampaignNew extends Component {
     } catch (err) {
       if(err.message.includes("Failed to subscribe to new newBlockHeaders to confirm the transaction receipts."))
       {
-        //this.setState({ errorMessage: "" });
+        this.setState({ errorMessage: "" });
         Router.pushRoute("/");
       }
       else {
