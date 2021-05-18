@@ -27,9 +27,9 @@ class ContributeForm extends Component {
 
       Router.replaceRoute(`/campaigns/${this.props.address}`);
     } catch (err) {
-      if(err.message.includes("Failed to subscribe to new newBlockHeaders to confirm the transaction receipts."))
+      if(err.message.includes("Failed to subscribe to new newBlockHeaders to confirm the transaction receipts.") || err.message)
       {
-        //this.setState({ errorMessage: "" });
+        this.setState({ errorMessage: "" });
         Router.replaceRoute(`/campaigns/${this.props.address}`);
       }
       else {
