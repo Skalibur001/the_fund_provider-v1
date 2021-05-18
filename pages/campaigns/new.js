@@ -36,6 +36,7 @@ class CampaignNew extends Component {
         Router.pushRoute("/");
       }
       else {
+        console.log(typeof (err.message));
         this.setState({errorMessage: err.message});
       }
     }
