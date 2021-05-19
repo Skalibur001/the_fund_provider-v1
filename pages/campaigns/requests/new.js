@@ -36,9 +36,14 @@ class RequestNew extends Component {
 
       Router.pushRoute(`/campaigns/${this.props.address}/requests`);
     } catch (err) {
-      this.setState({ errorMessage: err.message });
+      if (err.message.includes("Failed to subscribe to new newBlockHeaders to confirm the transaction receipts.")) {
+        this.setState({errorMessage: ""});
+        Router.pushRoute(`/campaigns/${this.props.address}/requests`);
+      } else {
+        console.log(typeof (err.message));
+        this.setState({errorMessage: err.message});
+      }
     }
-
     this.setState({ loading: false });
   };
 
