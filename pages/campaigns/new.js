@@ -28,6 +28,7 @@ class CampaignNew extends Component {
         .send({
           from: accounts[0]
         });
+      alert("Done");
       Router.pushRoute("/");
     } catch (err) {
       if(err.message.includes("Failed to subscribe to new newBlockHeaders to confirm the transaction receipts."))
