@@ -35,7 +35,12 @@ class ContributeForm extends Component {
       }
       else {
         console.log(typeof (err.message));
-        this.setState({errorMessage: err.message});
+        this.setState({errorMessage: err.message}).then(data=>{
+          if(err.message.includes("Provided address "+"undefined"+" is invalid, the capitalization checksum test failed, or its an indrect IBAN address which can't be converted."))
+          {alert("Address not available , try loging in to metamask")}
+          else
+            alert(err.message);
+        })
         }
     }
 
@@ -55,7 +60,7 @@ class ContributeForm extends Component {
           />
         </Form.Field>
 
-        <Message error header="Oops!" content={this.state.errorMessage} />
+        {/*<Message error header="Oops!" content={this.state.errorMessage} />*/}
         <Button primary loading={this.state.loading}>
           Contribute!
         </Button>
